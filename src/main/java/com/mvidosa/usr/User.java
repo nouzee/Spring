@@ -3,10 +3,14 @@ package com.mvidosa.usr;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -38,8 +42,12 @@ public class User {
 	private List<Auction> auctions;
 	
 	@OneToMany(mappedBy="user")
-	private List<NewItem> newItems;
-
+	private List<NewItem> newitems;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="userItem_id")
+	private List<NewItem> voteditems;
+	
 	public int getId() {
 		return id;
 	}
@@ -79,7 +87,7 @@ public class User {
 	public void setBonusPoints(int bonusPoints) {
 		this.bonusPoints = bonusPoints;
 	}
-
+	
 	public List<Item> getItems() {
 		return items;
 	}
@@ -87,7 +95,7 @@ public class User {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-
+	
 	public List<Auction> getAuctions() {
 		return auctions;
 	}
@@ -97,10 +105,29 @@ public class User {
 	}
 
 	public List<NewItem> getNewitems() {
-		return newItems;
+		return newitems;
 	}
 
 	public void setNewitems(List<NewItem> newitems) {
-		this.newItems = newitems;
+		this.newitems = newitems;
+	}
+
+	public List<NewItem> getVoteditems() {
+		return voteditems;
+	}
+
+	public void setVoteditems(List<NewItem> voteditems) {
+		this.voteditems = voteditems;
+	}
+	
+	//------------------------CONSTRUCTORS------------------------//
+	public User(String name, String password, Date lastactivity, int bonuspoints) {
+		this.name = name;
+		this.password = password;
+		this.lastActivity = lastactivity;
+		this.bonusPoints = bonuspoints;
+	}
+	public User() {
+
 	}
 }

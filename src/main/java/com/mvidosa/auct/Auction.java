@@ -20,42 +20,24 @@ public class Auction {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	private int itemId;
-	
-	private int userId;
-	
 	private int prize;
 	
 	private int highestBid;
 	
 	private int highestBidder;
 	
+	private int itemId;
+	
 	@ManyToOne
-	@JoinColumn(name="user")
+	@JoinColumn(name="userId")
 	private User user;
-
+	
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 
 	public int getPrize() {
@@ -81,7 +63,7 @@ public class Auction {
 	public void setHighestBidder(int highestBidder) {
 		this.highestBidder = highestBidder;
 	}
-
+	
 	public User getUser() {
 		return user;
 	}
@@ -89,4 +71,25 @@ public class Auction {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public int getItemId() {
+		return itemId;
+	}
+
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
+	//------------------------CONSTRUCTORS------------------------//
+	public Auction() {
+		
+	}
+	
+	public Auction(int prize, int itemid, int startingPrize, User user) {
+		this.prize = prize;
+		this.highestBid = startingPrize;
+		this.highestBidder = user.getId();
+		this.itemId = itemid;
+		this.user = user;
+	}
+
 }

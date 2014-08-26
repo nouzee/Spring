@@ -1,15 +1,18 @@
 package com.mvidosa.itm;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.mvidosa.usr.User;
@@ -26,18 +29,18 @@ public class NewItem {
 	
 	private String description;
 	
+	private int prize;
+	
 	private int ups;
 	
 	private int downs;
 	
-	private int highestBidder;
-	
-	@OneToMany(mappedBy="newitem")
-	private List<User> voters;
-	
 	@ManyToOne
-	@JoinColumn(name="user")
-	private User owner;
+	@JoinColumn(name="userId")
+	private User user;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="voteditems")
+	private List<User> voters;
 
 	public int getId() {
 		return id;
@@ -79,14 +82,14 @@ public class NewItem {
 		this.downs = downs;
 	}
 
-	public int getHighestBidder() {
-		return highestBidder;
+	public int getPrize() {
+		return prize;
 	}
 
-	public void setHighestBidder(int highestBidder) {
-		this.highestBidder = highestBidder;
+	public void setPrize(int prize) {
+		this.prize = prize;
 	}
-
+	
 	public List<User> getVoters() {
 		return voters;
 	}
@@ -95,11 +98,35 @@ public class NewItem {
 		this.voters = voters;
 	}
 
-	public User getOwner() {
-		return owner;
+	public User getUser() {
+		return user;
 	}
 
-	public void setOwner(User owner) {
-		this.owner = owner;
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public void voteUp(User user){
+		this.ups++;
+		this.voters.add(user);
+	}
+	
+	public void voteDown(User user){
+		this.downs++;
+		this.voters.add(user);
+	}
+	//------------------------CONSTRUCTORS------------------------//
+	public NewItem() {
+		
+	}
+	
+	public NewItem(String name, String description, int prize, User user ) {
+		this.name = name;
+		this.description = description;
+		this.prize = prize;
+		this.user = user;
+		this.ups = 0;
+		this.downs = 0;
+		this.voters = new ArrayList<User>();
 	}
 }

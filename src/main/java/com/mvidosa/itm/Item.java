@@ -22,11 +22,11 @@ public class Item {
 	private String name;
 	
 	private String description;
-	
+
 	@ManyToOne
-	@JoinColumn(name="user")
+	@JoinColumn(name="userId")
 	private User user;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -50,12 +50,22 @@ public class Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	
 	public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
+		this.user = user;
+	}
+	//------------------------CONSTRUCTORS------------------------//
+	public Item() {
+		
+	}
+	
+	public Item(String name, String description, User user) {
+		this.name = name;
+		this.description = description;
 		this.user = user;
 	}
 }
