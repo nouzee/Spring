@@ -14,7 +14,6 @@ import com.mvidosa.usr.User;
 @Entity
 @Table(name="ITEM")
 public class Item {
-	//----------------------------------------------------------------------------//
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -27,7 +26,7 @@ public class Item {
 	@ManyToOne
 	@JoinColumn(name="user")
 	private User user;
-	//----------------------------------------------------------------------------//
+	
 	public int getId() {
 		return id;
 	}
@@ -50,5 +49,13 @@ public class Item {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

@@ -32,15 +32,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public List<User> listUsers() {
-		List<User> userList = this.userDAO.listUsers();
-		return userList;
+		return this.userDAO.listUsers();
 	}
 
 	@Override
 	@Transactional
 	public User getUserById(int id) {
-		User u = this.userDAO.getUserById(id);
-		return u;
+		return this.userDAO.getUserById(id);
 	}
 
 	@Override

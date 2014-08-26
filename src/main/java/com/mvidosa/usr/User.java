@@ -7,12 +7,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.mvidosa.auct.Auction;
 import com.mvidosa.itm.Item;
+import com.mvidosa.itm.NewItem;
 
 @Entity
 @Table(name="USER")
@@ -35,6 +36,9 @@ public class User {
 	
 	@OneToMany(mappedBy="user")
 	private List<Auction> auctions;
+	
+	@OneToMany(mappedBy="user")
+	private List<NewItem> newItems;
 
 	public int getId() {
 		return id;
@@ -83,12 +87,20 @@ public class User {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-	
-	public List<Auction> getAuction() {
+
+	public List<Auction> getAuctions() {
 		return auctions;
 	}
 
 	public void setAuctions(List<Auction> auctions) {
 		this.auctions = auctions;
+	}
+
+	public List<NewItem> getNewitems() {
+		return newItems;
+	}
+
+	public void setNewitems(List<NewItem> newitems) {
+		this.newItems = newitems;
 	}
 }

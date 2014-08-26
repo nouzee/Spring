@@ -14,7 +14,7 @@ import com.mvidosa.usr.User;
 @Entity
 @Table(name="AUCTION")
 public class Auction {
-	//----------------------------------------------------------------------------//
+
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Auction {
 	@ManyToOne
 	@JoinColumn(name="user")
 	private User user;
-	//----------------------------------------------------------------------------//
+
 	public int getId() {
 		return id;
 	}
@@ -80,5 +80,13 @@ public class Auction {
 
 	public void setHighestBidder(int highestBidder) {
 		this.highestBidder = highestBidder;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

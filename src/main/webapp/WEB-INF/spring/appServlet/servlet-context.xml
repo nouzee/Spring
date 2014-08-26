@@ -17,10 +17,28 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	
-	<!-- DATABASE SETTINGS -->
-	<context:property-placeholder location="/WEB-INF/database.properties" />
-	<context:annotation-config />
+	<!-- This bean sets up the Velocity environment for us based on a root path 
+		for templates. Optionally, a properties file can be specified for more control 
+		over the Velocity environment, but the defaults are pretty sane for file 
+		based template loading. -->
+	<beans:bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<beans:property name="resourceLoaderPath" value="/WEB-INF/velocity/" />
+	</beans:bean>
 	
+	<!-- View resolvers can also be configured with ResourceBundles or XML files. 
+		If you need different view resolving based on Locale, you have to use the 
+		resource bundle resolver. -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<beans:property name="cache" value="true" />
+		<beans:property name="prefix" value="" />
+		<beans:property name="suffix" value=".vm" />
+		<beans:property name="order" value="1" />
+	</beans:bean>
+	
+	<context:property-placeholder location="/WEB-INF/database.properties" />
+
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<beans:property name="driverClassName" value="${database.driver}" />
@@ -38,6 +56,7 @@
 				<beans:value>com.mvidosa.usr.User</beans:value>
 				<beans:value>com.mvidosa.auct.Auction</beans:value>
 				<beans:value>com.mvidosa.itm.Item</beans:value>
+				<beans:value>com.mvidosa.itm.NewItem</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -49,12 +68,12 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="userDAO" class="com.mvidosa.dao.UserDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="driverService" class="com.mvidosa.service.UserServiceImpl">
+	<beans:bean id="userService" class="com.mvidosa.service.UserServiceImpl">
 		<beans:property name="userDAO" ref="userDAO"></beans:property>
 	</beans:bean>
 	
@@ -66,6 +85,14 @@
 		<beans:property name="itemDAO" ref="itemDAO"></beans:property>
 	</beans:bean>
 	
+	<beans:bean id="newItemDAO" class="com.mvidosa.dao.NewItemDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="newItemService" class="com.mvidosa.service.NewItemServiceImpl">
+		<beans:property name="newItemDAO" ref="newItemDAO"></beans:property>
+	</beans:bean>
+	
 	<beans:bean id="auctionDAO" class="com.mvidosa.dao.AuctionDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
@@ -74,24 +101,14 @@
 		<beans:property name="auctionDAO" ref="auctionDAO"></beans:property>
 	</beans:bean>
 	
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	
-	<beans:bean id="velocityConfig"
-		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-		<beans:property name="resourceLoaderPath" value="/WEB-INF/velocity/" />
+	<beans:bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	
-	<!-- View resolvers can also be configured with ResourceBundles or XML files. 
-		If you need different view resolving based on Locale, you have to use the 
-		resource bundle resolver. -->
-	<beans:bean id="viewResolver"
-		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-		<beans:property name="cache" value="true" />
-		<beans:property name="prefix" value="" />
-		<beans:property name="suffix" value=".vm" />
-		<beans:property name="order" value="1" />
-	</beans:bean>
-	
+
 	<context:component-scan base-package="com.mvidosa.ah" />
 
 </beans:beans>

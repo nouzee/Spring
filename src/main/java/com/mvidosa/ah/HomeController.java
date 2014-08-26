@@ -4,14 +4,13 @@ import java.util.Date;
 import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.mvidosa.service.AuctionService;
 import com.mvidosa.service.ItemService;
+import com.mvidosa.service.NewItemService;
 import com.mvidosa.service.UserService;
 import com.mvidosa.usr.User;
 
@@ -23,6 +22,7 @@ public class HomeController {
 	
 	private AuctionService auctionService;
 	private ItemService itemService;
+	private NewItemService newItemService;
 	private UserService userService;
 	
 	
@@ -30,6 +30,12 @@ public class HomeController {
 	@Qualifier(value = "auctionService")
 	public void setAuctionService(AuctionService as) {
 		this.auctionService = as;
+	}
+	
+	@Autowired(required = true)
+	@Qualifier(value = "newItemService")
+	public void setNewItemService(NewItemService nis) {
+		this.newItemService = nis;
 	}
 	
 	@Autowired(required = true)
@@ -47,14 +53,12 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String index(Locale locale) {
 		System.out.println("index");
-		
 		User user1 = new User();
 		user1.setName("Admin Ferenc");
 		user1.setPassword("Mojito");
 		user1.setBonusPoints(0);
 		user1.setLastActivity(new Date());
 		this.userService.addUser(user1);
-		
 		return "index";
 	}
 
