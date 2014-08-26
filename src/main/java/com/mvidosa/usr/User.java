@@ -1,5 +1,6 @@
 package com.mvidosa.usr;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -121,13 +122,16 @@ public class User {
 	}
 	
 	//------------------------CONSTRUCTORS------------------------//
-	public User(String name, String password, Date lastactivity, int bonuspoints) {
+	public User(String name, String password) {
 		this.name = name;
 		this.password = password;
-		this.lastActivity = lastactivity;
-		this.bonusPoints = bonuspoints;
+		this.lastActivity = new Date();
+		this.bonusPoints = 0;
+		this.items = new ArrayList<Item>();
+		this.newitems = new ArrayList<NewItem>();
+		this.voteditems = new ArrayList<NewItem>();
+		this.auctions = new ArrayList<Auction>();
 	}
-	public User() {
-
-	}
+	
+	public User() { }
 }

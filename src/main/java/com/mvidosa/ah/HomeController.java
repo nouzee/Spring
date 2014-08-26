@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import com.mvidosa.auct.Auction;
+import com.mvidosa.itm.Item;
+import com.mvidosa.itm.NewItem;
 import com.mvidosa.service.AuctionService;
 import com.mvidosa.service.ItemService;
 import com.mvidosa.service.NewItemService;
@@ -53,12 +56,7 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String index(Locale locale) {
 		System.out.println("index");
-		User user1 = new User();
-		user1.setName("Admin Ferenc");
-		user1.setPassword("Mojito");
-		user1.setBonusPoints(0);
-		user1.setLastActivity(new Date());
-		this.userService.addUser(user1);
+			
 		return "index";
 	}
 

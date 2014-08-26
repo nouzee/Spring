@@ -59,9 +59,7 @@ public class Item {
 		this.user = user;
 	}
 	//------------------------CONSTRUCTORS------------------------//
-	public Item() {
-		
-	}
+	public Item() { }
 	
 	public Item(String name, String description, User user) {
 		this.name = name;

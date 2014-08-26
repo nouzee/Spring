@@ -116,9 +116,7 @@ public class NewItem {
 		this.voters.add(user);
 	}
 	//------------------------CONSTRUCTORS------------------------//
-	public NewItem() {
-		
-	}
+	public NewItem() { }
 	
 	public NewItem(String name, String description, int prize, User user ) {
 		this.name = name;

@@ -19,8 +19,6 @@ public class Auction {
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-
-	private int prize;
 	
 	private int highestBid;
 	
@@ -38,14 +36,6 @@ public class Auction {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getPrize() {
-		return prize;
-	}
-
-	public void setPrize(int prize) {
-		this.prize = prize;
 	}
 
 	public int getHighestBid() {
@@ -80,12 +70,9 @@ public class Auction {
 		this.itemId = itemId;
 	}
 	//------------------------CONSTRUCTORS------------------------//
-	public Auction() {
-		
-	}
+	public Auction() { }
 	
-	public Auction(int prize, int itemid, int startingPrize, User user) {
-		this.prize = prize;
+	public Auction(int itemid, int startingPrize, User user) {
 		this.highestBid = startingPrize;
 		this.highestBidder = user.getId();
 		this.itemId = itemid;
