@@ -47,4 +47,10 @@ public class ItemServiceImpl implements ItemService {
 		this.itemDAO.removeItem(id);
 	}
 
+	@Override
+	@Transactional
+	public List<Item> listItemByUserId(int id) {
+		return this.itemDAO.listItemByUserId(id);
+	}
+
 }

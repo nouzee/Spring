@@ -47,5 +47,17 @@ public class NewItemServiceImpl implements NewItemService{
 	public void removeNewItem(int id) {
 		this.newItemDAO.removeNewItem(id);
 	}
+
+	@Override
+	@Transactional
+	public List<NewItem> listNewItemsByUserId(int id) {
+		return this.newItemDAO.listNewItemsByUserId(id);
+	}
+
+	@Override
+	@Transactional
+	public List<NewItem> listNewItemsByUserIdCompl(int id) {
+		return this.newItemDAO.listNewItemsByUserIdCompl(id);
+	}
 	
 }

@@ -10,4 +10,6 @@ public interface NewItemDAO {
 	public void removeNewItem(int id);
 	public NewItem getNewItemById(int id);
 	public List<NewItem> listNewItems();
+	public List<NewItem> listNewItemsByUserId(int id);
+	public List<NewItem> listNewItemsByUserIdCompl(int id);
 }

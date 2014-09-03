@@ -10,4 +10,6 @@ public interface AuctionService {
 	public List<Auction> listAuctions();
 	public Auction getAuctionById(int id);
 	public void removeAuction(int id);
+	public List<Auction> listAuctionsByUserId(int id);
+	public List<Auction> listAuctionsByUserIdCompl(int id);
 }

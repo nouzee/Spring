@@ -11,7 +11,7 @@ import com.mvidosa.itm.Item;
 @Repository
 public class ItemDAOImpl implements ItemDAO{
 	
-private SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 	
 	public void setSessionFactory(SessionFactory sf){
 		this.sessionFactory = sf;
@@ -33,7 +33,7 @@ private SessionFactory sessionFactory;
 	@SuppressWarnings("unchecked")
 	public List<Item> listItems() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Item> itemList = session.createQuery("from User").list();
+		List<Item> itemList = session.createQuery("from Item").list();
 		return itemList;
 	}
 
@@ -51,5 +51,12 @@ private SessionFactory sessionFactory;
 		if(null != i) {
 			session.delete(i);
 		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Item> listItemByUserId(int id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.createQuery("from Item where userId = :userId").setParameter("userId", id).list();
 	}
 }

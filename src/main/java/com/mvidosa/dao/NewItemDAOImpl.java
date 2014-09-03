@@ -52,4 +52,18 @@ public class NewItemDAOImpl implements NewItemDAO{
 		List<NewItem> newItemList = session.createQuery("from NewItem").list();
 		return newItemList;
 	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<NewItem> listNewItemsByUserId(int id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.createQuery("from NewItem where userId = :userId").setParameter("userId", id).list();
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<NewItem> listNewItemsByUserIdCompl(int id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.createQuery("from NewItem where userId <> :userId").setParameter("userId", id).list();
+	}
 }

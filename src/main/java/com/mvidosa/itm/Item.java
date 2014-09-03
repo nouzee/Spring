@@ -58,6 +58,12 @@ public class Item {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	@Override
+	public String toString(){
+		return "id = "+id+", name = "+name+", description = "+description;
+	}
+	
 	//------------------------CONSTRUCTORS------------------------//
 	public Item() { }
 	

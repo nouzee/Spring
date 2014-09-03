@@ -69,6 +69,12 @@ public class Auction {
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
+	
+	@Override
+	public String toString(){
+		return "id = "+id+", highestBid = "+highestBid+", highestBidder = "+highestBidder+", itemId = "+itemId;
+	}
+	
 	//------------------------CONSTRUCTORS------------------------//
 	public Auction() { }
 	

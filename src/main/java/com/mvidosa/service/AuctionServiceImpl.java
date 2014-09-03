@@ -46,4 +46,16 @@ public class AuctionServiceImpl implements AuctionService{
 	public void removeAuction(int id) {
 		this.auctionDAO.removeAuctionByItemId(id);
 	}
+
+	@Override
+	@Transactional
+	public List<Auction> listAuctionsByUserId(int id) {
+		return this.auctionDAO.listAuctionsByUserId(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Auction> listAuctionsByUserIdCompl(int id) {
+		return this.auctionDAO.listAuctionsByUserIdCompl(id);
+	}
 }

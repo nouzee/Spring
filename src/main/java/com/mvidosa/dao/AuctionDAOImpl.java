@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import com.mvidosa.auct.Auction;
 
+@Repository
 public class AuctionDAOImpl implements AuctionDAO {
 	
 	private SessionFactory sessionFactory;
@@ -56,6 +58,13 @@ public class AuctionDAOImpl implements AuctionDAO {
 	public List<Auction> listAuctionsByUserId(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		return session.createQuery("from Auction where userId = :userId").setParameter("userId", id).list();
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Auction> listAuctionsByUserIdCompl(int id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.createQuery("from Auction where userId <> :userId").setParameter("userId", id).list();
 	}
 	
 }

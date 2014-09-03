@@ -10,4 +10,5 @@ public interface ItemDAO {
 	public List<Item> listItems();
 	public Item getItemById(int itemId);
 	public void removeItem(int itemId);
+	public List<Item> listItemByUserId(int id);
 }

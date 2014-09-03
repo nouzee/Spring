@@ -34,6 +34,10 @@ public class User {
 	
 	private Date lastActivity;
 	
+	private int cash;
+	
+	private int totalCash;
+	
 	private int bonusPoints;
 	
 	@OneToMany(mappedBy="user")
@@ -120,6 +124,38 @@ public class User {
 	public void setVoteditems(List<NewItem> voteditems) {
 		this.voteditems = voteditems;
 	}
+
+	public int getCash() {
+		return cash;
+	}
+
+	public void setCash(int cash) {
+		this.cash = cash;
+	}
+	
+
+	public int getTotalcash() {
+		return totalCash;
+	}
+
+	public void setTotalcash(int totalCash) {
+		this.totalCash = totalCash;
+	}
+	
+	public void addVotedItem(NewItem item) {
+		this.voteditems.add(item);
+	}
+	
+	@Override
+    public boolean equals(Object u)
+    {
+		return ((User) u).getId()==this.getId();
+    }
+	
+	@Override
+	public String toString(){
+		return "id = "+id+", name = "+name+", password = "+password+", last activity = "+lastActivity+",  bonus points = "+bonusPoints;
+	}
 	
 	//------------------------CONSTRUCTORS------------------------//
 	public User(String name, String password) {
@@ -127,6 +163,8 @@ public class User {
 		this.password = password;
 		this.lastActivity = new Date();
 		this.bonusPoints = 0;
+		this.cash = 100000;
+		this.totalCash = 100000;
 		this.items = new ArrayList<Item>();
 		this.newitems = new ArrayList<NewItem>();
 		this.voteditems = new ArrayList<NewItem>();
@@ -134,4 +172,5 @@ public class User {
 	}
 	
 	public User() { }
+
 }

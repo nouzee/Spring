@@ -11,4 +11,5 @@ public interface AuctionDAO {
 	public Auction getAuctionById(int id);
 	public List<Auction> listAuctions();
 	public List<Auction> listAuctionsByUserId(int id);
+	public List<Auction> listAuctionsByUserIdCompl(int id);
 }

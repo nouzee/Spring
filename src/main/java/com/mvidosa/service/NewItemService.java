@@ -10,4 +10,6 @@ public interface NewItemService {
 	public List<NewItem> listNewItems();
 	public NewItem getNewItemById(int id);
 	public void removeNewItem(int id);
+	public List<NewItem> listNewItemsByUserId(int id);
+	public List<NewItem> listNewItemsByUserIdCompl(int id);
 }

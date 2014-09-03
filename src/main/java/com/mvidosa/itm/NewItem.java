@@ -115,6 +115,12 @@ public class NewItem {
 		this.downs++;
 		this.voters.add(user);
 	}
+	
+	@Override
+	public String toString(){
+		return "id = "+id+", name = "+name+", description = "+description+", prize = "+prize+", ups/downs = "+ups+"/"+downs;
+	}
+	
 	//------------------------CONSTRUCTORS------------------------//
 	public NewItem() { }
 	
