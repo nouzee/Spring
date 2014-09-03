@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>Virtual Auction House</title>
+	<script>
+		var userId = $user.id;
+		var pick='"';
+	</script>
+	<script type="text/javascript"  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript"  src="./resources/panels_jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="./resources/main_style.css" />
+</head>
+<body>
+	<table class="main_table">
+		<tr>
+			<td colspan="3" class="header_td">
+				<table class="sub_table">
+					<tr class="header-center">
+						<td class="spec_hov_td title_line">
+							$user.name, logged in
+						</td>
+						<td class="spec_hov_td title_line">
+							Money: $user.cash / $user.totalcash
+						</td>
+						<td class="spec_hov_td title_line">
+							Bonus points: $user.bonusPoints
+						</td>
+							<td class="spec_hov_td title_line">
+								<a href="logout">
+										Logout
+								</a>
+							</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr class="second_tr_style">
+			<td class="container_td">
+			
+				<table class="scrollabletable">
+					<tbody id="1p_body">
+					</tbody>
+					<tfoot id="1p_foot">
+					</tfoot>
+				</table>
+			</td>
+			<td class="container_td">
+			
+				<table class="scrollabletable">
+					<thead id="2p_head">
+					<button type="button" id="second_panel_button" value="My auctions">My auctions</button>
+					</thead>
+					<tbody id="2p_body">
+					</tbody>
+					<tfoot id="2p_foot">
+					</tfoot>
+				</table>
+			
+			</td>
+			<td class="container_td">
+			
+				<table class="scrollabletable">
+					<thead id="3p_head">
+					<button type="button" id="third_panel_button">Suggest new item</button>
+					</thead>
+					<tbody id="3p_body">
+					</tbody>
+					<tfoot id="3p_foot">
+					</tfoot>
+				</table>
+			
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>Virtual Auction House - Login</title>
+	<script>
+    function submitForm(action) {
+        document.getElementById('form_login_reg').action = action;
+        
+        var value = document.getElementById('password_field').value;
+        var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        
+        if(document.getElementById('name_field').value=="") {
+        	document.getElementById("inf").innerHTML = 'You must enter a username!';
+        }
+        else {
+        if(value.match(passw)) {
+        	document.getElementById('form_login_reg').submit();
+        	
+        }
+        else {
+        	document.getElementById("inf").innerHTML = ' ';
+        	alert('The password must contain 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter.');
+        	
+        } 
+        }
+    }
+	</script>
+	<link rel="stylesheet" type="text/css" href="./resources/main_style.css" />
+</head>
+<body>
+	<table class="login_table">
+		<tr>
+			<td colspan="2" id="inf"> $information </td>
+			<td rowspan="4" class='big_logo'>
+				Virtual Auction House
+			</td>
+		</tr>
+		<form action="login" method="post" id="form_login_reg"> 
+		<tr>
+			<td>
+			Username:
+			</td>
+			<td>
+				<input type="text" name="username" id="name_field">
+			</td>
+		</tr>
+		<tr>
+			<td>
+			Password:
+			</td>
+			<td>
+				<input type="password" name="password" id="password_field">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" onclick="submitForm('login')" value="Login" />
+			</td>
+			<td>
+				<input type="button" onclick="submitForm('register')" value="Register" />
+			</td>
+		</tr>
+		</form>
+	</table>
+</body>
+</html>

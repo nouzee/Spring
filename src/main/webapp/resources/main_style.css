@@ -1,0 +1,199 @@
+@CHARSET "UTF-8";
+
+.scrollabletable {
+	width: 100%;
+	max-height:100%;
+}
+
+#inf {
+	text-shadow: 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff;
+}
+
+textarea {
+	resize: none;
+}
+
+tbody {
+	max-height:100%;
+}
+
+input, button, table, textarea {
+	border-radius: 8px;
+}
+
+.scrollabletable tbody {
+	display: -webkit-flex;
+	width: 100%;
+	overflow: auto;
+	-webkit-flex-flow: row wrap;
+}
+
+.scrollabletable tbody tr{
+	display: -webkit-flex;
+	width: 100%;
+
+}
+
+.scrollabletable tr td {
+	display: -webkit-flex;
+	width: 100%;
+}
+
+#second_panel_button, #third_panel_button {
+	width: 100%;
+	text-align: center;
+}
+
+.votebutton {
+	width: 50%;
+}
+
+body {
+    background-image: url("img/background_image.jpg");
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
+    color: white;
+    padding: 10px;
+    height: 92%;
+}
+
+.main_table {
+	width: 97%;
+	height: 100%;
+	margin: auto;
+}
+.sub_table {
+	width: 100%;
+	border: 2px outset white;
+	margin-bottom: 10px;
+}
+
+.header-center {
+	background-color: black;
+	font-size: 140%;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+.header_td {
+	vertical-align: top;
+	height: 20px;
+}
+
+.header_center {
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.vah-logo {
+	width: 60px;
+	
+	
+	background-image: url("img/logo.jpg");
+    background-repeat: no-repeat; 
+	background-position: center center; 
+	background-size: 100% 100%;
+	font-size : 0px;
+	
+}
+
+button {
+	background-color: black;
+	color: white;
+}
+
+input, textarea {
+	background-color: black;
+	color: white;
+	
+}
+
+
+.item_td {
+	height: 25px;
+}
+
+.auction_button_class, .delete_auction_button, .sell_auction_button, .bid_auction_button, .vote_newitem_button {
+	width: 100%;
+}
+
+#newitemname, #newitemdescription, #newitemprize{
+	width: 100%;
+}
+
+#auction_starting_prize{
+	width: 49%;
+	height: 30px;
+}
+
+.createAuctionButtonStyle {
+	width: 49%;
+	margin-left:2%;
+	margin-top: 3%;
+	height: 30px;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:visited {
+	color: white;
+}
+
+a:hover {
+	text-shadow: 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff;
+}
+
+td:hover {
+	color: white;
+	
+}
+
+.spec_hov_td:hover{
+	text-shadow: 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff;
+}
+
+.container_td {
+	width: 33%;
+	vertical-align: top;
+	margin: auto;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.fancy_discription {
+	margin-top: 15px;
+	text-shadow: 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff;
+}
+
+.login_table {
+	margin: auto;
+	margin-top: 15%;
+}
+
+.big_logo {
+	background-image: url("img/big_logo.png");
+    background-repeat: no-repeat; 
+	background-position: center center; 
+	background-size: 100% 100%;
+	font-size : 0px;
+	width: 140px;
+}
+
+.title_line {
+	text-align: center;
+}
+
+.user_auction {
+	color: #3399ff;
+}
+
+#1p_body, #2p_body, #3p_body {
+	width: 80%;
+}
+
+#1p_foot, #2p_foot, #3p_foot {
+	text-shadow: 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff, 0px 0px 6px #3399ff;
+}
